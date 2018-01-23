@@ -17,7 +17,7 @@ namespace openMultiCam {
             get { return _width; }
             set {
                 if (value % 2 != 0) {
-                    _width = value - 1;
+                    _width = value-1;
                 } else {
                     _width = value;
                 }
@@ -29,7 +29,7 @@ namespace openMultiCam {
             get { return _height; }
             set {
                 if(value % 2 != 0) {
-                    _height = value - 1;
+                    _height = value-1;
                 } else {
                     _height = value;
                 }

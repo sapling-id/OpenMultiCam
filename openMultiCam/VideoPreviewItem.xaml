@@ -59,9 +59,16 @@
         <Image x:Name="backgroundImage" Width="200" Height="130" OpacityMask="#FFA6A6A6" Source="{Binding PreviewImage}"/>
         <Rectangle Fill="#7F648189" Width="200" Height="130"  HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
-        <Button x:Name="exportButton" Margin="84,49,84,49" Style="{StaticResource NoDefaultMouseOver}" UseLayoutRounding="True" Opacity="0" Click="exportButton_Click" Background="{x:Null}">
+        <Button x:Name="exportButtonVP9" Margin="50,49,115,49" Style="{StaticResource NoDefaultMouseOver}" UseLayoutRounding="True" Opacity="0" Click="exportButtonVP9_Click" Background="{x:Null}">
             <StackPanel >
-                <Image Width="32" Height="32" Source="Resources/omc_export.png" />
+                <Image Width="32" Height="32" Source="Resources/omc_export_vp9.png" />
+            </StackPanel>
+        </Button>
+
+
+        <Button x:Name="exportButtonGIF" Margin="115,49,50,49" Style="{StaticResource NoDefaultMouseOver}" UseLayoutRounding="True" Opacity="0" Click="exportButtonGif_Click" Background="{x:Null}">
+            <StackPanel >
+                <Image Width="32" Height="32" Source="Resources/omc_export_gif.png" />
             </StackPanel>
         </Button>
         <Label x:Name="playTimeLabel" Style="{StaticResource FadeIn}" Content="{Binding PlayTime}" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="5,3,0,0" VerticalAlignment="Top" Background="#B2FFFFFF" Padding="0" Height="23" Width="50" Foreground="#FF414141" Opacity="0" FontWeight="Bold" FontSize="14.667"/>

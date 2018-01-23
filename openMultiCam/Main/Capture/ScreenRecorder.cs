@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using openMultiCam.Utils;
+using System.Security.AccessControl;
 
 namespace openMultiCam {
     public class ScreenRecorder {
@@ -62,7 +63,7 @@ namespace openMultiCam {
                     //stopWatch.Stop();
                     //Debug.WriteLine("frameTime > " + stopWatch.Elapsed.TotalSeconds + " s");
 
-                    videoFileWriter.writeFrame(screenCaptureUtils.captureScreen());
+                    videoFileWriter.writeToFrameBuffer(screenCaptureUtils.captureScreen());
 
                     timeDelta = stopwatch.ElapsedMilliseconds - oldTime;
                     if (timeDelta < frameTime) {
@@ -76,6 +77,11 @@ namespace openMultiCam {
                 } else {
                     videoWriterFlag = true;
                     if(videoFileWriter != null && videoFileWriter.isOpen) {
+                        videoFileWriter.lastFrame = true;
+                        while(!videoFileWriter.finished) {
+                            Thread.Sleep(30);
+                        }
+                        Debug.WriteLine("finalized");
                         videoFileWriter.finalize(averageFramerate);
                     }
                     Thread.Sleep(100);
@@ -91,7 +97,7 @@ namespace openMultiCam {
             videoWriterFlag = false;
 
             workingDirectory = CamConstants.WORKSPACE_PATH + UniqueFileName.generate() + "\\";
-            Directory.CreateDirectory(workingDirectory);
+            DirectoryInfo directoryInfo = Directory.CreateDirectory(workingDirectory);
 
             videoFileWriter = new VideoFileWriter(workingDirectory, 1000 / frameTime, screenCaptureUtils.width, screenCaptureUtils.height);
         }

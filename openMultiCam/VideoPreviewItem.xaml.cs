@@ -28,30 +28,23 @@ namespace openMultiCam {
             InitializeComponent();
         }
 
-        private void exportButton_Click(object sender, RoutedEventArgs e) {
+        private void exportButtonGif_Click(object sender, RoutedEventArgs e) {
             VideoPreviewItemModel itemModel = (VideoPreviewItemModel)(sender as Button).DataContext;
             VideoFileReader videoFileReader = new VideoFileReader(WorkspaceManager.getWorkspacePathForGivenFile(itemModel.ownVideoPreviewInstance.fileName));
             LoadingScreen loadingScreen = new LoadingScreen("Encoding as gif...", "Please, stand by!", new EncodingUtilities(videoFileReader.videoFileMetaData.filePath, 100));
-            loadingScreen.startEncodingAsGif();
-            /*MessageBox.Show("button works! " + itemModel.ownVideoPreviewInstance.fileName + "\n " + itemModel.ownVideoPreviewInstance.filePath);
 
-            Bitmap bmp = videoFileReader.getFrameAtIndex(50);
+            loadingScreen.startEncodingAs(EncodingUtilities.EncodingType.GIF);
+            videoFileReader.dispose();
+            videoFileReader = null;
 
-            //Bitmap bmp = videoFileReader.getNextFrame();
+        }
 
-            using (MemoryStream memory = new MemoryStream()) {
-                Bitmap bmp2 = new Bitmap(bmp);
-                bmp2.Save(memory, ImageFormat.Png);
-                memory.Position = 0;
-                BitmapImage bitmapImage = new BitmapImage();
-                bitmapImage.BeginInit();
-                bitmapImage.StreamSource = memory;
-                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
-                bitmapImage.EndInit();
+        private void exportButtonVP9_Click(object sender, RoutedEventArgs e) {
+            VideoPreviewItemModel itemModel = (VideoPreviewItemModel)(sender as Button).DataContext;
+            VideoFileReader videoFileReader = new VideoFileReader(WorkspaceManager.getWorkspacePathForGivenFile(itemModel.ownVideoPreviewInstance.fileName));
+            LoadingScreen loadingScreen = new LoadingScreen("Encoding as webm...", "Please, stand by!", new EncodingUtilities(videoFileReader.videoFileMetaData.filePath, 100));
 
-                item.PreviewImage = bitmapImage;
-            }*/
-            //bmp.Save(WorkspaceManager.getWorkspacePathForGivenFile(itemModel.ownVideoPreviewInstance.fileName) + "\\testImage.jpeg", ImageFormat.Jpeg);
+            loadingScreen.startEncodingAs(EncodingUtilities.EncodingType.VP9);
             videoFileReader.dispose();
             videoFileReader = null;
 
@@ -71,6 +64,7 @@ namespace openMultiCam {
         private void customButton_MouseLeave(object sender, MouseEventArgs e) {
             ((Button)sender).Background = new SolidColorBrush(System.Windows.Media.Color.FromArgb(0, 0, 0, 0));
         }
+
 
     }
 }

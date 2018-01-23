@@ -83,7 +83,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Slider x:Name="qualitySlider" HorizontalAlignment="Left" Margin="6,68,0,0" VerticalAlignment="Top" Width="89" Maximum="100" AutoToolTipPlacement="TopLeft" Value="75" ValueChanged="qualitySlider_ValueChanged"/>
+        <Slider x:Name="qualitySlider" HorizontalAlignment="Left" Margin="6,68,0,0" VerticalAlignment="Top" Width="89" Maximum="100" AutoToolTipPlacement="TopLeft" Value="100" ValueChanged="qualitySlider_ValueChanged"/>
         <Label x:Name="labelQualitySlider" Content="Quality" HorizontalAlignment="Left" Margin="6,57,0,0" VerticalAlignment="Top" Padding="0" Foreground="#FFDDDDDD" FontSize="8"/>
 
 

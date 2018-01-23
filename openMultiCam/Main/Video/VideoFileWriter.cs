@@ -6,6 +6,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml;
 
@@ -13,6 +14,8 @@ namespace openMultiCam.Utils {
     public class VideoFileWriter {
         public const String VIDEO_PREVIEW_FILENAME = "vPreview.jpeg";
         public const String VIDEO_META_DATA_FILENAME = "metaData.xml";
+        public bool lastFrame { get; set; }
+        public bool finished { get; set; }
         private String filePath;
         private float targetFramerate;
         private float averageFramerate;
@@ -23,6 +26,8 @@ namespace openMultiCam.Utils {
         private bool initialFrame;
         public bool isOpen { get; private set; }
         private XmlWriterSettings xmlWriterSettings;
+        private Queue<Bitmap> imageQueue;
+        private Thread writingThread;
 
         public VideoFileWriter(String filePath, float targetFramerate, int frameWidth, int frameHeight) {
             this.filePath = filePath;
@@ -34,18 +39,43 @@ namespace openMultiCam.Utils {
             this.isOpen = false;
             videoFrameSearializer = new VideoFrameSerializer(filePath);
             initialFrame = true;
+            lastFrame = false;
+            finished = false;
 
             xmlWriterSettings = new XmlWriterSettings();
             xmlWriterSettings.Indent = true;
             xmlWriterSettings.IndentChars = "\t";
+
+            imageQueue = new Queue<Bitmap>();
+
+            writingThread = new Thread(write);
+            writingThread.Start();
         }
 
-        public void writeFrame(Bitmap frameToWrite) {
+        public void writeToFrameBuffer(Bitmap frameToWrite) {
+            imageQueue.Enqueue(frameToWrite);
+        }
+
+        private void write() {
+            while (true) {
+                if (imageQueue.Count > 0) {
+
+                    writeFrame(imageQueue.Dequeue());
+                }
+
+                if (lastFrame && imageQueue.Count == 0) {
+                    finished = true;
+                    break;
+                }
+            }
+        }
+
+        private void writeFrame(Bitmap frameToWrite) {
             frameCount++;
             if (initialFrame) {
                 initialFrame = false;
                 isOpen = true;
-                frameToWrite.Save(filePath + VideoFileWriter.VIDEO_PREVIEW_FILENAME, BitmapUtilities.jpegEncoder, BitmapUtilities.encodingParameters);
+                frameToWrite.Save(filePath + VideoFileWriter.VIDEO_PREVIEW_FILENAME, BitmapUtilities.pngCodecInfo, BitmapUtilities.encodingParameters);
             }
             videoFrameSearializer.writeFrame(BitmapUtilities.bitmapToByteArrayFromMemoryStream(frameToWrite), frameCount -1);
         }

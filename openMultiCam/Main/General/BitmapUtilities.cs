@@ -10,13 +10,13 @@ using System.Threading.Tasks;
 
 namespace openMultiCam.Utils {
     public class BitmapUtilities {
-        public static ImageCodecInfo jpegEncoder;
+        public static ImageCodecInfo pngCodecInfo;
         public static EncoderParameters encodingParameters;
 
         static BitmapUtilities(){
-            jpegEncoder = getEncoderByImageFormat(ImageFormat.Jpeg);
+            pngCodecInfo = getEncoderByImageFormat(ImageFormat.Png);
             encodingParameters = new EncoderParameters(1);
-            setEncoderQuality(75);
+            setEncoderQuality(100);
         }
 
         public static void setEncoderQuality(int percentage) {
@@ -32,17 +32,16 @@ namespace openMultiCam.Utils {
 
         public static byte[] bitmapToByteArrayFromMemoryStream(Bitmap bitmap) {
             using (MemoryStream memoryStream = new MemoryStream()) {
-                bitmap.Save(memoryStream, BitmapUtilities.jpegEncoder, BitmapUtilities.encodingParameters);
+                bitmap.Save(memoryStream, BitmapUtilities.pngCodecInfo, BitmapUtilities.encodingParameters);
+
                 return memoryStream.ToArray();
             }
         }
 
         public static Bitmap byteArrayToBitmap(byte[] imageData) {
-            Bitmap bitmap;
             using (MemoryStream memoryStream = new MemoryStream(imageData)) {
-                bitmap = new Bitmap(memoryStream);
+                return new Bitmap(memoryStream);
             }
-            return bitmap;
         }
 
         private static ImageCodecInfo getEncoderByImageFormat(ImageFormat imageFormat) {

@@ -28,10 +28,16 @@ namespace openMultiCam {
 
         }
 
-        public void startEncodingAsGif() {
+        public void startEncodingAs(EncodingUtilities.EncodingType encodingType) {
 
-            encodingUtilities.update += updateProgress;
-            encodingUtilities.encodeAsGif();
+            if(encodingType == EncodingUtilities.EncodingType.GIF) {
+                encodingUtilities.update += updateProgress;
+                encodingUtilities.encodeAsGif();
+            } else if(encodingType == EncodingUtilities.EncodingType.VP9) {
+                encodingUtilities.update += updateProgress;
+                encodingUtilities.encodeAsVP9();
+            }
+
         }
 
         private void updateProgress(float progress, bool finished, double eta) {

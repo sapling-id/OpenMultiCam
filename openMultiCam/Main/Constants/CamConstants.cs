@@ -8,6 +8,7 @@ namespace openMultiCam.Utils {
     public class CamConstants {
         public const String WORKSPACE_PATH = "omcWorkspace\\";
         public const String ENCODED_FILE_NAME_GIF = "encodedAsGif.gif";
+        public const String ENCODED_FILE_NAME_WEBM = "encodedAsWebm.webm";
         public const String VIDEO_FRAMES_FILENAME = "vFrames.xml";
     }
 }
