@@ -77,14 +77,6 @@ C:\Users\Vinz\Desktop\openMultiCam\openMultiCam\obj\Debug\openMultiCam.exe.manif
 C:\Users\Vinz\Desktop\openMultiCam\openMultiCam\obj\Debug\openMultiCam.application
 C:\Users\Vinz\Desktop\openMultiCam\openMultiCam\obj\Debug\openMultiCam.exe
 C:\Users\Vinz\Desktop\openMultiCam\openMultiCam\obj\Debug\openMultiCam.pdb
-C:\Users\Vinz\Documents\OpenMultiCam\openMultiCam\bin\Debug\openMultiCam.exe.config
-C:\Users\Vinz\Documents\OpenMultiCam\openMultiCam\obj\Debug\openMultiCam.exe
-C:\Users\Vinz\Documents\OpenMultiCam\openMultiCam\obj\Debug\openMultiCam.pdb
-C:\Users\Vinz\Documents\OpenMultiCam\openMultiCam\bin\Debug\openMultiCam.exe.manifest
-C:\Users\Vinz\Documents\OpenMultiCam\openMultiCam\bin\Debug\openMultiCam.application
-C:\Users\Vinz\Documents\OpenMultiCam\openMultiCam\bin\Debug\openMultiCam.exe
-C:\Users\Vinz\Documents\OpenMultiCam\openMultiCam\bin\Debug\openMultiCam.pdb
-C:\Users\Vinz\Documents\OpenMultiCam\openMultiCam\obj\Debug\openMultiCam.csprojResolveAssemblyReference.cache
 C:\Users\Vinz\Documents\OpenMultiCam\openMultiCam\obj\Debug\RecordingArea.g.cs
 C:\Users\Vinz\Documents\OpenMultiCam\openMultiCam\obj\Debug\LoadingScreen.g.cs
 C:\Users\Vinz\Documents\OpenMultiCam\openMultiCam\obj\Debug\MainWindow.g.cs
@@ -94,6 +86,11 @@ C:\Users\Vinz\Documents\OpenMultiCam\openMultiCam\obj\Debug\App.g.cs
 C:\Users\Vinz\Documents\OpenMultiCam\openMultiCam\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Vinz\Documents\OpenMultiCam\openMultiCam\obj\Debug\openMultiCam_MarkupCompile.cache
 C:\Users\Vinz\Documents\OpenMultiCam\openMultiCam\obj\Debug\openMultiCam_MarkupCompile.lref
+C:\Users\Vinz\Documents\OpenMultiCam\openMultiCam\bin\Debug\openMultiCam.exe.config
+C:\Users\Vinz\Documents\OpenMultiCam\openMultiCam\bin\Debug\openMultiCam.exe.manifest
+C:\Users\Vinz\Documents\OpenMultiCam\openMultiCam\bin\Debug\openMultiCam.application
+C:\Users\Vinz\Documents\OpenMultiCam\openMultiCam\bin\Debug\openMultiCam.exe
+C:\Users\Vinz\Documents\OpenMultiCam\openMultiCam\bin\Debug\openMultiCam.pdb
 C:\Users\Vinz\Documents\OpenMultiCam\openMultiCam\obj\Debug\RecordingArea.baml
 C:\Users\Vinz\Documents\OpenMultiCam\openMultiCam\obj\Debug\LoadingScreen.baml
 C:\Users\Vinz\Documents\OpenMultiCam\openMultiCam\obj\Debug\MainWindow.baml
@@ -104,3 +101,5 @@ C:\Users\Vinz\Documents\OpenMultiCam\openMultiCam\obj\Debug\openMultiCam.Propert
 C:\Users\Vinz\Documents\OpenMultiCam\openMultiCam\obj\Debug\openMultiCam.csproj.GenerateResource.Cache
 C:\Users\Vinz\Documents\OpenMultiCam\openMultiCam\obj\Debug\openMultiCam.exe.manifest
 C:\Users\Vinz\Documents\OpenMultiCam\openMultiCam\obj\Debug\openMultiCam.application
+C:\Users\Vinz\Documents\OpenMultiCam\openMultiCam\obj\Debug\openMultiCam.exe
+C:\Users\Vinz\Documents\OpenMultiCam\openMultiCam\obj\Debug\openMultiCam.pdb

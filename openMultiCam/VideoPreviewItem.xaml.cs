@@ -31,7 +31,7 @@ namespace openMultiCam {
         private void exportButton_Click(object sender, RoutedEventArgs e) {
             VideoPreviewItemModel itemModel = (VideoPreviewItemModel)(sender as Button).DataContext;
             VideoFileReader videoFileReader = new VideoFileReader(WorkspaceManager.getWorkspacePathForGivenFile(itemModel.ownVideoPreviewInstance.fileName));
-            LoadingScreen loadingScreen = new LoadingScreen("Encoding as gif...", "Please, stand by!", new EncodingUtilities(videoFileReader.videoFileMetaData.filePath));
+            LoadingScreen loadingScreen = new LoadingScreen("Encoding as gif...", "Please, stand by!", new EncodingUtilities(videoFileReader.videoFileMetaData.filePath, 100));
             loadingScreen.startEncodingAsGif();
             /*MessageBox.Show("button works! " + itemModel.ownVideoPreviewInstance.fileName + "\n " + itemModel.ownVideoPreviewInstance.filePath);
 

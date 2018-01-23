@@ -34,14 +34,14 @@ namespace openMultiCam {
             encodingUtilities.encodeAsGif();
         }
 
-        private void updateProgress() {
+        private void updateProgress(float progress, bool finished, double eta) {
             this.Dispatcher.Invoke(() => {
-                setProgress(encodingUtilities.encodingProgress * 100f);
+                setProgress(progress * 100f);
 
 
-                setStatusMessage(currentMessage + " ETA: " + formatTime(encodingUtilities.estimatedTimeOfArrival));
+                setStatusMessage(currentMessage + " ETA: " + formatTime(eta));
 
-                if (encodingUtilities.encodingFinished) {
+                if (finished) {
                     this.Close();
                 }
             });
@@ -49,9 +49,9 @@ namespace openMultiCam {
         }
 
         private string formatTime(double timeInSeconds) {
-            int hours = (int)(encodingUtilities.estimatedTimeOfArrival / 3600);
-            int minutes = (int)((encodingUtilities.estimatedTimeOfArrival % 3600) / 60);
-            int seconds = (int)((encodingUtilities.estimatedTimeOfArrival % 3600) % 60);
+            int hours = (int)(timeInSeconds / 3600);
+            int minutes = (int)((timeInSeconds % 3600) / 60);
+            int seconds = (int)((timeInSeconds % 3600) % 60);
 
             if (hours > 0) {
                 return hours + "h"+ minutes + "m" + seconds + "s";

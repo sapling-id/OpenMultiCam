@@ -10,88 +10,48 @@ using System.Threading.Tasks;
 
 namespace openMultiCam.Main.Encoder {
     public class EncodingUtilities {
-        public float encodingProgress { get
-            {
-                return _encodingProgress;
-            }
-                private set { } }
-        public bool encodingFinished {
-            get
-            {
-                return _encodingFinished;
-            }
-            private set { }
-        }
-        public double estimatedTimeOfArrival
-        {
-            get
-            {
-                return _estimatedTimeOfArrival;
-            }
-            private set { }
-        }
 
-        private float _encodingProgress;
-        private bool _encodingFinished;
-        private double _estimatedTimeOfArrival;
-        public delegate void ProgressUpdate();
+        public delegate void ProgressUpdate(float progress, bool finished, double eta);
         public ProgressUpdate update { get; set; }
 
         private VideoFileReader videoFileReader;
         private Thread encodingThread;
         private string filePath;
+        private int quality;
 
 
-        public EncodingUtilities(String filePath) {
+        public EncodingUtilities(String filePath, int quality) {
             this.videoFileReader = new VideoFileReader(filePath);
+            this.quality = quality;
             this.filePath = filePath;
-            encodingProgress = 0;
-            encodingFinished = false;
         }
 
         private void updateData(float progress, bool finished, double eta) {
-            _encodingProgress = progress;
-            _encodingFinished = finished;
-            _estimatedTimeOfArrival = eta;
-
 
             if (update != null) {
-                update();
+                update(progress, finished, eta);
             }
         }
 
         private void encodeGif() {
             Bitmap currentFrame;
-
-
-            int encodedFrameCount = 0;
-            GifEncoder gifEncoder = new GifEncoder((int)videoFileReader.videoFileMetaData.targetFramerate, videoFileReader.videoFileMetaData.filePath + "\\" + CamConstants.ENCODED_FILE_NAME_GIF);
-
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
-            updateData((float)encodedFrameCount / videoFileReader.videoFileMetaData.frameCount,
-                        false,
-                        stopwatch.Elapsed.TotalSeconds * (videoFileReader.videoFileMetaData.frameCount - encodedFrameCount));
-            stopwatch.Stop();
+            GifEncoder gifEncoder = new GifEncoder((int)videoFileReader.videoFileMetaData.targetFramerate, videoFileReader.videoFileMetaData.filePath + "\\" + CamConstants.ENCODED_FILE_NAME_GIF, quality, videoFileReader.videoFileMetaData.frameCount);
+            gifEncoder.update += updateData;
 
             while (true) {
-                stopwatch.Restart();
                 currentFrame = videoFileReader.getNextFrame();
 
                 if (currentFrame != null) {
-
-                    gifEncoder.writeFrame(currentFrame);
-                    stopwatch.Stop();
-
-                    encodedFrameCount++;
-                    updateData((float)encodedFrameCount / videoFileReader.videoFileMetaData.frameCount,
-                                false,
-                                stopwatch.Elapsed.TotalSeconds * (videoFileReader.videoFileMetaData.frameCount - encodedFrameCount));
+                    gifEncoder.writeToFrameBuffer(currentFrame);
                 } else {
                     break;
                 }
             }
-            gifEncoder.finalizeEncoding();
+
+            gifEncoder.lastFrame = true;
+            while(!gifEncoder.finished) {
+                Thread.Sleep(100);
+            }
             updateData(1f, true, 0);
             Process.Start(filePath);
         }
