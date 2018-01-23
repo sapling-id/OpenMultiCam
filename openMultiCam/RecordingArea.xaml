@@ -1,0 +1,26 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:openMultiCam"
+        xmlns:Utils="clr-namespace:openMultiCam.Utils" x:Class="openMultiCam.RecordingArea"
+        mc:Ignorable="d"
+        Title="RecordingArea" Height="299.143" Width="313.714" 
+        BorderBrush="Black" Background="#02FFFFFF" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True" Topmost="True" MouseLeave="DragHighlighterMouseLeave" MouseEnter="DragHighlighterMouseEnter" Icon="Resources/omc_task_icon.ico">
+
+    <Grid >
+        <Rectangle Cursor="ScrollAll" x:Name="DragHighlighter" Fill="#FF2EBAFB" Margin="9" Stroke="#FF2EBAFB" Opacity="0.15" MouseDown="GeneralRectangleMouseDown" MouseUp="GeneralRectangleMouseUp" MouseMove="GeneralRectangleMouseMove" Visibility="Hidden"/>
+        <Rectangle x:Name="BlendBorder" StrokeThickness="2" Stroke="#FF0080FF" Focusable="False" ScrollViewer.VerticalScrollBarVisibility="Disabled" Opacity="0.6"/>
+        <Rectangle x:Name="LeftBorder" HorizontalAlignment="Left" Margin="0,9" Stroke="#FF3AFF00" StrokeThickness="2" Width="9" Cursor="SizeWE" Opacity="0.01" MouseDown="GeneralRectangleMouseDown" MouseMove="GeneralRectangleMouseMove" MouseUp="GeneralRectangleMouseUp" Fill="#FF3AFF00" MouseEnter="RectangleHighlightMouseEnter" MouseLeave="RectangleHighlightMouseLeave"/>
+        <Rectangle x:Name="BottomLeftBorder" HorizontalAlignment="Left" Stroke="#FF3AFF00" StrokeThickness="2" Width="9" Height="9" VerticalAlignment="Bottom" Cursor="SizeNESW" Opacity="0.01" MouseDown="GeneralRectangleMouseDown" MouseMove="GeneralRectangleMouseMove" MouseUp="GeneralRectangleMouseUp" Fill="#FF3AFF00" MouseEnter="RectangleHighlightMouseEnter" MouseLeave="RectangleHighlightMouseLeave"/>
+        <Rectangle x:Name="BottomRightBorder" Stroke="#FF3AFF00" StrokeThickness="2" Cursor="SizeNWSE" Height="9" VerticalAlignment="Bottom" Opacity="0.15" HorizontalAlignment="Right" Width="9" MouseDown="GeneralRectangleMouseDown" MouseMove="GeneralRectangleMouseMove" MouseUp="GeneralRectangleMouseUp" Fill="#FF3AFF00" MouseEnter="RectangleHighlightMouseEnter" MouseLeave="RectangleHighlightMouseLeave"/>
+        <Rectangle x:Name="TopRightBorder" Stroke="#FF3AFF00" StrokeThickness="2" Cursor="SizeNESW" Opacity="0.01" HorizontalAlignment="Right" Width="9" Height="9" VerticalAlignment="Top" MouseDown="GeneralRectangleMouseDown" MouseMove="GeneralRectangleMouseMove" MouseUp="GeneralRectangleMouseUp" Fill="#FF3AFF00" MouseEnter="RectangleHighlightMouseEnter" MouseLeave="RectangleHighlightMouseLeave"/>
+        <Rectangle x:Name="TopLeftBorder" HorizontalAlignment="Left" Stroke="#FF3AFF00" StrokeThickness="2" Width="9" Cursor="SizeNWSE" Opacity="0.01" Height="9" VerticalAlignment="Top" MouseDown="GeneralRectangleMouseDown" MouseMove="GeneralRectangleMouseMove" MouseUp="GeneralRectangleMouseUp" Fill="#FF3AFF00" MouseEnter="RectangleHighlightMouseEnter" MouseLeave="RectangleHighlightMouseLeave"/>
+        <Rectangle x:Name="RightBorder" Margin="0,9" Stroke="#FF3AFF00" StrokeThickness="2" Cursor="SizeWE" Opacity="0.01" MouseDown="GeneralRectangleMouseDown" MouseMove="GeneralRectangleMouseMove" MouseUp="GeneralRectangleMouseUp" HorizontalAlignment="Right" Width="9" Fill="#FF3AFF00" MouseEnter="RectangleHighlightMouseEnter" MouseLeave="RectangleHighlightMouseLeave"/>
+        <Rectangle x:Name="TopBorder" Height="9" Margin="9,0" Stroke="#FF3AFF00" StrokeThickness="2" VerticalAlignment="Top" Cursor="SizeNS" Opacity="0.01" MouseDown="GeneralRectangleMouseDown" MouseMove="GeneralRectangleMouseMove" MouseUp="GeneralRectangleMouseUp" Fill="#FF3AFF00" MouseEnter="RectangleHighlightMouseEnter" MouseLeave="RectangleHighlightMouseLeave"/>
+        <Rectangle x:Name="BottomBorder" Margin="9,0" Stroke="#FF3AFF00" StrokeThickness="2" Cursor="SizeNS" Opacity="0.01" MouseDown="GeneralRectangleMouseDown" MouseMove="GeneralRectangleMouseMove" MouseUp="GeneralRectangleMouseUp" Height="9" VerticalAlignment="Bottom" Fill="#FF3AFF00" MouseEnter="RectangleHighlightMouseEnter" MouseLeave="RectangleHighlightMouseLeave"/>
+        
+
+    </Grid>
+</Window>
