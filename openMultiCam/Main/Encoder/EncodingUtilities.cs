@@ -63,14 +63,23 @@ namespace openMultiCam.Main.Encoder {
         private void encodeGif() {
             Bitmap currentFrame;
 
-            Stopwatch stopwatch = new Stopwatch();
+
             int encodedFrameCount = 0;
             GifEncoder gifEncoder = new GifEncoder((int)videoFileReader.videoFileMetaData.targetFramerate, videoFileReader.videoFileMetaData.filePath + "\\" + CamConstants.ENCODED_FILE_NAME_GIF);
+
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            updateData((float)encodedFrameCount / videoFileReader.videoFileMetaData.frameCount,
+                        false,
+                        stopwatch.Elapsed.TotalSeconds * (videoFileReader.videoFileMetaData.frameCount - encodedFrameCount));
+            stopwatch.Stop();
+
             while (true) {
+                stopwatch.Restart();
                 currentFrame = videoFileReader.getNextFrame();
 
                 if (currentFrame != null) {
-                    stopwatch.Restart();
+
                     gifEncoder.writeFrame(currentFrame);
                     stopwatch.Stop();
 

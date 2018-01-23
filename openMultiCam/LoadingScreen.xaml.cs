@@ -49,11 +49,11 @@ namespace openMultiCam {
         }
 
         private string formatTime(double timeInSeconds) {
-            int seconds = (int)(encodingUtilities.estimatedTimeOfArrival - (encodingUtilities.estimatedTimeOfArrival / 60d));
-            int minutes = (int)(encodingUtilities.estimatedTimeOfArrival / 60d);
-            int hours = (int)(encodingUtilities.estimatedTimeOfArrival / 60d / 60d);
+            int hours = (int)(encodingUtilities.estimatedTimeOfArrival / 3600);
+            int minutes = (int)((encodingUtilities.estimatedTimeOfArrival % 3600) / 60);
+            int seconds = (int)((encodingUtilities.estimatedTimeOfArrival % 3600) % 60);
 
-            if(hours > 0) {
+            if (hours > 0) {
                 return hours + "h"+ minutes + "m" + seconds + "s";
             } else {
                 return minutes + "m" + seconds + "s";

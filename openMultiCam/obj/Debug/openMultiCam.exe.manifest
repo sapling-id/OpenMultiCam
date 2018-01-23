@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="openMultiCam.exe" size="280064">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="openMultiCam.exe" size="281088">
       <assemblyIdentity name="openMultiCam" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>A0kq1BpaYN5H1Dr3183YSBXGRhdZ9i3nkyRz9vrsUTE=</dsig:DigestValue>
+        <dsig:DigestValue>1tCKN9gW9iKY002RWS0nKg05Zao4k8trAcMLZHbIb7s=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
