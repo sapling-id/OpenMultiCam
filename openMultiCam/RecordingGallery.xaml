@@ -1,0 +1,42 @@
+﻿<Window x:Class="openMultiCam.RecordingGallery"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:openMultiCam"
+        mc:Ignorable="d"
+        Title="Recording Gallery" Height="500" Width="700" Icon="Resources/omc_task_icon.ico" MinWidth="250" MinHeight="500" Closing="Window_Closing">
+    <Grid>
+        <ListBox x:Name="listBoxGallery" Margin="10,10,10,33" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderBrush="#FFE0E0E0">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <ContentPresenter/>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <local:VideoPreviewItem/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+
+
+        </ListBox>
+        <Label x:Name="labelRecordingsCount" Content="Recordings: " HorizontalAlignment="Left" Margin="10,0,0,6" Padding="0" Width="63" Foreground="#FF6E6E6E" Height="18" VerticalAlignment="Bottom"/>
+        <Label x:Name="recordingCountLabel" Content="0" HorizontalAlignment="Left" Margin="78,0,0,6" Padding="0" Width="111" Foreground="#FF6E6E6E" Height="18" VerticalAlignment="Bottom"/>
+        <Label x:Name="labelGallerySize" Content="Gallery size:" Margin="0,0,75,6" Padding="0" Foreground="#FF6E6E6E" HorizontalAlignment="Right" Width="63" Height="18" VerticalAlignment="Bottom"/>
+        <Label x:Name="gallerySizeLabel" Content="0" Margin="0,0,10,6" Padding="0" Foreground="#FF6E6E6E" Height="18" VerticalAlignment="Bottom" Width="60" HorizontalAlignment="Right" HorizontalContentAlignment="Right"/>
+
+    </Grid>
+</Window>
